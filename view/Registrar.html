@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Donapp</title>
+    <link rel="icon" type="image/png" href="../assets/uploads/Icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../assets/css/StylesRegistrar.css">
+</head>
+<body>
+    <div class="caja-exterior">
+        <a href="../index.php" class="logo-container">
+            <img src="../assets/uploads/Red Logo.png" alt="Logo Donapp" class="form-logo">
+        </a>
+
+        <h2>Crea tu cuenta</h2>
+        <p class="subtitle">Completa los datos para registrarte en el sistema</p>
+        
+        <form action="../controller/registro.php" method="POST" class="form-grid" id="registerForm">
+            
+            <div class="input-group">
+                <label for="nombre"><i class="fa-solid fa-user"></i> Nombre Completo</label>
+                <input type="text" name="nombre" id="nombre" 
+                       placeholder="Escribe aquí tus nombres y apellidos" 
+                       required maxlength="100" onkeypress="return soloLetras(event)">
+            </div>
+
+            <div class="input-group">
+                <label for="tipo_doc"><i class="fa-solid fa-id-card"></i> Tipo de Documento</label>
+                <select name="tipo_doc" id="tipo_doc" required>
+                    <option value="" disabled selected>Selecciona tu tipo de documento</option>
+                    <option value="CC">Cédula de Ciudadanía</option>
+                    <option value="TI">Tarjeta de Identidad</option>
+                    <option value="CE">Cédula de Extranjería</option>
+                    <option value="PEP">PEP</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="numero_doc"><i class="fa-solid fa-hashtag"></i> Número de Documento</label>
+                <input type="text" name="numero_doc" id="numero_doc" 
+                       placeholder="Digita solo los números de tu documento" 
+                       required maxlength="15" onkeypress="return soloNumeros(event)">
+            </div>
+
+            <div class="input-group">
+                <label for="fecha_nac"><i class="fa-solid fa-calendar-days"></i> Fecha de Nacimiento</label>
+                <input type="date" name="fecha_nac" id="fecha_nac" required min="1920-01-01">
+            </div>
+
+            <div class="input-group">
+                <label for="email"><i class="fa-solid fa-envelope"></i> Correo Electrónico</label>
+                <input type="email" name="email" id="email" 
+                       placeholder="Escribe tu correo electrónico personal" 
+                       required maxlength="150">
+            </div>
+
+            <div class="input-group">
+                <label for="telefono"><i class="fa-solid fa-phone"></i> Teléfono o Celular</label>
+                <input type="text" name="telefono" id="telefono" 
+                       placeholder="Digita tus 10 números de teléfono" 
+                       required maxlength="10" onkeypress="return soloNumeros(event)">
+            </div>
+
+            <div class="input-group">
+                <label for="password"><i class="fa-solid fa-lock"></i> Contraseña (Máximo 30)</label>
+                <div class="password-wrapper">
+                    <input type="password" name="password" id="password" 
+                           placeholder="Crea una clave de máximo 30 caracteres" 
+                           required minlength="6" maxlength="30">
+                    <button type="button" class="eye-btn" onclick="togglePass('password', 'eye1')">
+                        <i class="fa-solid fa-eye" id="eye1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="confirm_password"><i class="fa-solid fa-shield-halved"></i> Repite tu Contraseña</label>
+                <div class="password-wrapper">
+                    <input type="password" id="confirm_password" 
+                           placeholder="Escribe la misma clave nuevamente" 
+                           required maxlength="30">
+                    <button type="button" class="eye-btn" onclick="togglePass('confirm_password', 'eye2')">
+                        <i class="fa-solid fa-eye" id="eye2"></i>
+                    </button>
+                </div>
+                <span id="error-pass" class="error-msg">¡Las contraseñas no coinciden!</span>
+            </div>
+
+            <div class="input-group full-width"> <label for="direccion"><i class="fa-solid fa-location-dot"></i> Dirección de Residencia</label>
+    <input type="text" name="direccion" id="direccion" 
+           placeholder="Escribe tu dirección actual de vivienda" 
+           required maxlength="255">
+</div>
+
+            <div class="input-group full-width">
+                <label for="necesidad"><i class="fa-solid fa-hand-holding-heart"></i> ¿En qué podemos ayudarte? (Máximo 300 caracteres)</label>
+                <textarea name="necesidad" id="necesidad" rows="2" 
+                          placeholder="Cuéntanos brevemente si necesitas algún apoyo especial" maxlength="300"></textarea>
+            </div>
+
+            <button type="submit" class="boton-moderno full-width">
+                <span>Registrarse ahora</span>
+                <i class="fa-solid fa-user-plus"></i>
+            </button>
+            
+            <div class="auth-links full-width">
+                <p>¿Ya tienes una cuenta? <a href="IniciarSesion.html">Inicia sesión aquí</a></p>
+                <p class="asistido-txt">¿Necesitas ayuda? <a href="javascript:void(0)" onclick="abrirAsistido()">Usa el Registro Asistido</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div id="modalAsistido" class="modal-asistido">
+    <div class="modal-content">
+        <span class="close-btn" onclick="cerrarAsistido()">&times;</span>
+        <h3><i class="fa-solid fa-circle-info"></i> Registro Asistido</h3>
+        <p class="text-muted">Si presentas dificultades con el formulario digital, nuestro equipo te ayudará a completar tu registro de forma presencial.</p>
+        
+        <ul class="lista-asistencia">
+            <li><i class="fa-solid fa-map-location-dot"></i> <div><strong>Ubicación:</strong><br>Transversal 73 H Bis #75B 46 SUR, Ciudad Bolívar.</div></li>
+            <li><i class="fa-solid fa-id-badge"></i> <div><strong>Atención personalizada:</strong><br>Un asistente gestionará tus datos en el sistema.</div></li>
+            <li><i class="fa-solid fa-file-invoice"></i> <div><strong>Requisito obligatorio:</strong><br>Presentar documento de identidad original.</div></li>
+        </ul>
+
+        <div class="horarios-box">
+            <h4><i class="fa-regular fa-clock"></i> Horarios de Atención</h4>
+            <p><strong>Lunes a Viernes:</strong> 7:00 AM – 5:00 PM</p>
+            <p><strong>Sábados:</strong> 7:00 AM – 12:00 PM</p>
+        </div>
+    </div>
+</div>
+
+    <script src="../assets/js/registro.js"></script>
+</body>
+</html>
