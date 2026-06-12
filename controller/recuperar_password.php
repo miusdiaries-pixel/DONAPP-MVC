@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['solicitar_reset'])) {
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com'; 
                 $mail->SMTPAuth   = true;
-                $mail->Username = MAIL_USERNAME;
-                $mail->Password = MAIL_PASSWORD;
+                $mail->Username = 'donapp.co@gmail.com';
+                $mail->Password = 'jceq kxjs rrsh uwav';
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port       = 587;
                 $mail->CharSet    = 'UTF-8';
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['solicitar_reset'])) {
                 $mail->setFrom('no-reply@donapp.com', 'DONAPP Equipo');
                 $mail->addAddress($email, $user['nombre']);
 
-                $link = "http://{$_SERVER['HTTP_HOST']}/donapp/controller/recuperar_password.php?paso=restablecer&token=$token_raw";
+                $link = "http://{$_SERVER['HTTP_HOST']}/DONAPP MVC/controller/recuperar_password.php?paso=restablecer&token=$token_raw";
                 
                 $mail->isHTML(true);
                 $mail->Subject = 'DONAPP — Recuperar contraseña';
@@ -142,130 +142,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nueva_pass'])) {
     <title>Donapp — Recuperar contraseña</title>
     <link rel="icon" type="image/png" href="../assets/uploads/Icon.png">
     <link rel="stylesheet" href="../assets/css/admin_style.css">
+    <link rel="stylesheet" href="../assets/css/token.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        :root {
-            --color-primary: #df0b0b;
-            --color-primary-dark: #811212;
-        }
 
-        body { 
-            display:flex; 
-            align-items:center; 
-            justify-content:center; 
-            min-height:100vh; 
-            background-color: #f8f9fa;
-            margin:0; 
-            font-family: 'DM Sans', sans-serif; 
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* ═══════════════════════════════════════════
-           FONDO ANIMADO EN PATRÓN (LOOP)
-           ═══════════════════════════════════════════ */
-        body::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background-image: url('../assets/uploads/Red Logo.png'); 
-            background-repeat: repeat;
-            background-size: 110px;
-            opacity: 0.06;
-            transform: rotate(-15deg);
-            animation: moveBackground 20s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes moveBackground {
-            from { transform: rotate(-15deg) translateY(0); }
-            to { transform: rotate(-15deg) translateY(110px); }
-        }
-
-        .recover-card { 
-            background: #ffffff; 
-            border-radius: 16px; 
-            padding: 40px; 
-            max-width: 420px; 
-            width: 90%; 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); 
-            z-index: 1;
-        }
-
-        .recover-card h2 { margin-bottom: 24px; color: var(--color-primary); text-align: center; }
-        
-        .msg-ok  { color: #2e7d32; background: #e8f5e9; border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; text-align: center; font-size: 0.9rem; border-left: 4px solid #2e7d32; }
-        .msg-err { color: #c62828; background: #ffebee; border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; text-align: center; font-size: 0.9rem; border-left: 4px solid #c62828; }
-
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
-        .form-input { 
-            width: 100%; 
-            padding: 12px; 
-            border: 1.5px solid #e5e7eb; 
-            border-radius: 10px; 
-            outline: none; 
-            box-sizing: border-box;
-            transition: 0.3s;
-        }
-        .form-input:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(223, 11, 11, 0.1); }
-
-        .btn-submit {
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 10px;
-            width: 100%;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .btn-submit:hover { background: var(--color-primary-dark); transform: translateY(-2px); }
-
-        .back-link { 
-            margin-top: 20px; 
-            display: block; 
-            text-align: center; 
-            color: var(--color-primary); 
-            text-decoration: none; 
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-        .back-link:hover { text-decoration: underline; }
-
-    .logo-container {
-    display: block;
-    text-align: center;
-    margin-bottom: 0;
-}
-
-.form-logo {
-    width: 150px;
-    margin-bottom: 0px;
-    transition: transform 0.3s ease;
-}
-
-.form-logo:hover {
-    transform: scale(1.05);
-}
-
-    </style>
 </head>
 <body>
 
 <div class="recover-card">
 
     <a href="../index.php" class="logo-container">
-            <img src="../assets/uploads/Red Logo.png" alt="Logo Donapp" class="form-logo">
+            <img src="../assets/uploads/Red-Logo.png" alt="Logo Donapp" class="form-logo">
         </a>
 
     <h2><i class="fa-solid fa-lock-open"></i> Recuperar Contraseña</h2>
@@ -301,25 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nueva_pass'])) {
             <i class="fa-solid fa-floppy-disk"></i> Restablecer contraseña
         </button>
     </form>
-    <script>
-    function checkPass(form) {
-        const p1 = document.getElementById('rp_pass1').value;
-        const p2 = document.getElementById('rp_pass2').value;
-        const err = document.getElementById('rp_match_err');
-        if (p1 !== p2) {
-            err.style.display = 'block';
-            document.getElementById('rp_pass2').focus();
-            return false;
-        }
-        err.style.display = 'none';
-        return true;
-    }
-    document.getElementById('rp_pass2').addEventListener('input', function() {
-        const p1 = document.getElementById('rp_pass1').value;
-        const err = document.getElementById('rp_match_err');
-        err.style.display = (this.value && this.value !== p1) ? 'block' : 'none';
-    });
-    </script>
+    <script src="../assets/js/token.js"></script>
 
     <?php elseif ($paso === 'listo'): ?>
     <div style="text-align: center;">

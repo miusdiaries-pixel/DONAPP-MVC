@@ -14,7 +14,8 @@
 }
 
 body {
-    background-color: #f8f9fa; /* Color base */
+    background-color: #f8f9fa;
+    /* Color base */
     height: 100vh;
     display: flex;
     align-items: center;
@@ -24,9 +25,11 @@ body {
     position: relative;
 }
 
+
 /* ═══════════════════════════════════════════
    FONDO ANIMADO EN PATRÓN (LOOP)
    ═══════════════════════════════════════════ */
+
 body::before {
     content: "";
     position: absolute;
@@ -35,10 +38,12 @@ body::before {
     width: 200%;
     height: 200%;
     /* Reemplaza la ruta por la de tu icono/logo pequeño */
-    background-image: url('../uploads/Red Logo.png'); 
+    background-image: url('../uploads/Red-Logo.png');
     background-repeat: repeat;
-    background-size: 110px; /* Tamaño de cada logo en el patrón */
-    opacity: 0.06; /* Muy sutil para que no moleste la vista */
+    background-size: 110px;
+    /* Tamaño de cada logo en el patrón */
+    opacity: 0.06;
+    /* Muy sutil para que no moleste la vista */
     transform: rotate(-15deg);
     animation: moveBackground 20s linear infinite;
     z-index: -1;
@@ -49,7 +54,8 @@ body::before {
         transform: rotate(-15deg) translateY(0);
     }
     to {
-        transform: rotate(-15deg) translateY(80px); /* Debe coincidir con background-size */
+        transform: rotate(-15deg) translateY(80px);
+        /* Debe coincidir con background-size */
     }
 }
 
@@ -120,7 +126,9 @@ input:focus {
     box-shadow: 0 0 0 4px rgba(223, 11, 11, 0.1);
 }
 
+
 /* Contenedor del Password y Ojo */
+
 .password-wrapper {
     position: relative;
     display: flex;
@@ -143,7 +151,9 @@ input:focus {
     color: var(--color-primary);
 }
 
+
 /* Botón Moderno */
+
 .boton-moderno {
     width: 100%;
     padding: 14px;
@@ -172,7 +182,9 @@ input:focus {
     transform: translateY(0);
 }
 
+
 /* Enlaces inferiores */
+
 .auth-links {
     margin-top: 25px;
     display: flex;
@@ -192,8 +204,10 @@ input:focus {
 }
 
 .forgot-pass {
-    display: inline-block; /* Crucial para que acepte el margin-top */
-    margin-top: 15px;      /* Ajusta el espacio a tu gusto */
+    display: inline-block;
+    /* Crucial para que acepte el margin-top */
+    margin-top: 15px;
+    /* Ajusta el espacio a tu gusto */
     font-size: 0.85rem;
     color: var(--color-primary);
     transition: color 0.3s;
@@ -208,6 +222,10 @@ input:focus {
 .auth-links a:hover {
     text-decoration: none;
 }
+
 @media (max-width: 480px) {
-    .caja-exterior { padding: 24px 16px; margin: 16px; }
+    .caja-exterior {
+        padding: 24px 16px;
+        margin: 16px;
+    }
 }

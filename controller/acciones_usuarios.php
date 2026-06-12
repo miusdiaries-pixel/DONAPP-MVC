@@ -116,8 +116,8 @@ if (isset($_POST['update_user'])) {
     // REGLA DE NEGOCIO: Solo el donante/solicitante tiene necesidad y prioridad
     $necesidad = ($rol === 'donante') ? trim($_POST['necesidad'] ?? '') : null;
     if (empty($necesidad)) $necesidad = null;
-    $prioridad  = ($rol === 'donante' && !empty($_POST['prioridad']))          ? trim($_POST['prioridad'])          : null;
-    $obs_visita = ($rol === 'donante' && !empty($_POST['observacion_visita']))  ? trim($_POST['observacion_visita']) : null;
+    $prioridad  = ($rol === 'donante' && !empty($_POST['prioridad']))         ? trim($_POST['prioridad'])          : null;
+    $obs_visita = ($rol === 'donante' && !empty($_POST['observacion_visita'])) ? trim($_POST['observacion_visita']) : null;
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) redir('../view/admin_dashboard.php#usuarios', 'Email inválido.');
 

@@ -77,7 +77,7 @@ $stats_donaciones = $res_d ? $res_d->fetch_assoc()['total'] : 0;
             <div class="hero-overlay"></div>
 
             <div class="hero-video-content">
-                <a href="index.php"><img src="assets/uploads/White Logo.png" alt="Donapp Logo" class="logo-site"></a>
+                <a href="index.php"><img src="assets/uploads/White-Logo.png" alt="Donapp Logo" class="logo-site"></a>
                 <h1 class="hero-title">
                     <span class="title-gradient">Dona</span> lo que no usas,<br>
                     <span class="title-gradient">Recibe</span> lo que necesitas
@@ -324,7 +324,7 @@ $stats_donaciones = $res_d ? $res_d->fetch_assoc()['total'] : 0;
         <div class="footer-content">
             <div class="footer-brand">
                 <a href="index.php">
-   <img src="assets/uploads/Red Logo.png" alt="Donapp" class="footer-logo">
+   <img src="assets/uploads/Red-Logo.png" alt="Donapp" class="footer-logo">
 </a>
                 <p>Plataforma de donaciones para la comunidad de Ciudad Bolívar.</p>
             </div>

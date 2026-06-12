@@ -66,8 +66,8 @@ function notificarCliente($conn, $tipo, $idRegistro, $nuevoEstado, $observacion)
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username = MAIL_USERNAME;
-        $mail->Password = MAIL_PASSWORD;
+        $mail->Username = 'donapp.co@gmail.com';
+        $mail->Password = 'jceq kxjs rrsh uwav';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
         $mail->CharSet    = 'UTF-8';

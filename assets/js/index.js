@@ -5,7 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ DONAPP cargado correctamente');
-    
+
     // Partículas animadas para el hero (si el contenedor existe)
     initHeroParticles();
 });
@@ -61,7 +61,7 @@ function verDetallePublicacion(data) {
                 <i class="fa-regular fa-calendar"></i> ${data.fecha}
             </span>
         </div>`;
-    
+
     detalleHeader.innerHTML = htmlHeader;
 
     // 4. Gestión de la Imagen (TIPO PÓSTER - SIN CORTAR)
@@ -72,7 +72,7 @@ function verDetallePublicacion(data) {
         const infoBox = document.querySelector('.detalle-info-box');
         const pImagenBloque = document.createElement('div');
         pImagenBloque.id = 'detalle-imagen-bloque';
-        
+
         // Contenedor con fondo neutro por si la imagen es muy delgada
         pImagenBloque.style.cssText = `
             margin-top: 15px; 
@@ -87,7 +87,7 @@ function verDetallePublicacion(data) {
 
         const pImagen = document.createElement('img');
         pImagen.src = data.imagen;
-        
+
         /* CAMBIO CLAVE: 
            - max-height: 500px (ajusta este valor según prefieras el alto máximo)
            - object-fit: contain (Muestra la imagen completa sin recortes)
@@ -99,9 +99,9 @@ function verDetallePublicacion(data) {
             display: block;
             background: #f8f9fa;
         `;
-        
+
         pImagenBloque.appendChild(pImagen);
-        
+
         if (infoBox) {
             infoBox.parentNode.insertBefore(pImagenBloque, infoBox);
         }
@@ -111,8 +111,8 @@ function verDetallePublicacion(data) {
     const modalContent = document.querySelector('.detalle-publicacion-content');
     if (modalContent) {
         modalContent.style.display = 'block';
-        modalContent.style.position = 'relative'; 
-        modalContent.style.padding = '20px 25px'; 
+        modalContent.style.position = 'relative';
+        modalContent.style.padding = '20px 25px';
     }
 
     // 6. Botón Cerrar (X) - Estilizado y sobre la imagen si es necesario
@@ -145,7 +145,7 @@ function verDetallePublicacion(data) {
 function initHeroParticles() {
     const container = document.getElementById('particles-container');
     if (!container) return;
-    
+
     const count = 30;
     for (let i = 0; i < count; i++) {
         const p = document.createElement('div');
